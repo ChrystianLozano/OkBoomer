@@ -22,20 +22,14 @@ if($var2 > 2){
 }
 
 
-function getDuration($months){
-  $years = floor($months / 12);
-  $extraMonths = $months % 12;
-
-  return "$years años $extraMonths meses";
-}
 
 
 function printJob($job){
   
   echo '<li class="work-position">';
-  echo '<h5>' . $job['title'] . '</h5>';
-  echo '<p>' . $job['description'] . '</p>';
-  echo '<p>' . getDuration($job['monhs']) . '</p>';
+  echo '<h5>' . $job->title . '</h5>';
+  echo '<p>' . $job->getDescription() . '</p>';
+  echo '<p>' . $job->getDurationString() . '</p>';
   echo '<strong>Achievements:</strong>';
   echo '<ul>';
   echo   '<li>Lorem ipsum dolor sit amet, 80% consectetuer adipiscing elit.</li>';
@@ -101,14 +95,14 @@ echo '</li>';
             <?php
               $totalMonths = 0;
               for($idx = 0;$idx < count($jobs); $idx++) {
-                $totalMonths += $jobs[$idx]['monhs'];
+                $totalMonths += $jobs[$idx]->monhs;
 
                 if($totalMonths > $limitMonths){
                 break;
                 }
 
 
-                if($jobs[$idx]['visible'] == false){
+                if($jobs[$idx]->visible == false){
                   continue;
                 }
 
