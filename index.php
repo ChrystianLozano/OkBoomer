@@ -1,47 +1,9 @@
 <?php
 
-// include('jobs.php');
-include_once('jobs.php');
-// require('jobs.php');
-// require_once('jobs.php');
+require_once('jobs.php');
 
-
-
-$lastname = 'Lozano';
-$name = "Chrystian $lastname";
+$name = 'Hector Benitez';
 $limitMonths = 2000;
-// var_dump($name)
-
-
-// var_dump($jobs);
-$var2 = 1;
-if($var2 > 2){
-  echo 'es mayor que 2';
-}else{
-  echo 'No es mayor que 2';
-}
-
-
-
-
-function printJob($job){
-  
-  echo '<li class="work-position">';
-  echo '<h5>' . $job->title . '</h5>';
-  echo '<p>' . $job->getDescription() . '</p>';
-  echo '<p>' . $job->getDurationString() . '</p>';
-  echo '<strong>Achievements:</strong>';
-  echo '<ul>';
-  echo   '<li>Lorem ipsum dolor sit amet, 80% consectetuer adipiscing elit.</li>';
-  echo   '<li>Lorem ipsum dolor sit amet, 80% consectetuer adipiscing elit.</li>';
-  echo   '<li>Lorem ipsum dolor sit amet, 80% consectetuer adipiscing elit.</li>';
-  echo '</ul>';
-echo '</li>';
-
-}
-
-
-
 
 ?>
 
@@ -71,7 +33,7 @@ echo '</li>';
         <h1><?php echo $name; ?></h1>
         <h2>PHP Developer</h2>
         <ul>
-          <li>Mail: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="1c74797f68736e5c717d7570327f7371">[email&#160;protected]</a></li>
+          <li>Mail: hector@mail.com</li>
           <li>Phone: 1234567890</li>
           <li>LinkedIn: https://linkedin.com</li>
           <li>Twitter: @hectorbenitez</li>
@@ -93,27 +55,29 @@ echo '</li>';
           <h3 class="border-bottom-gray" >Work Experience</h3>
           <ul>
             <?php
-              $totalMonths = 0;
-              for($idx = 0;$idx < count($jobs); $idx++) {
-                $totalMonths += $jobs[$idx]->monhs;
-
-                if($totalMonths > $limitMonths){
+            $totalMonths = 0;
+            for($idx = 0;$idx < count($jobs); $idx++) {
+              // $totalMonths = $totalMonths + $jobs[$idx]['months'];
+              $totalMonths += $jobs[$idx]->months;
+              if($totalMonths > $limitMonths) {
                 break;
-                }
+              }
 
-
-                if($jobs[$idx]->visible == false){
-                  continue;
-                }
-
-                printJob($jobs[$idx]);
-                
-              };
+              printElement($jobs[$idx]);
+            }
             ?>
           </ul>
         </div>
         <div>
             <h3 class="border-bottom-gray">Projects</h3>
+            <ul>
+            <?php
+            for($idx = 0;$idx < count($projects); $idx++) {
+              printElement($projects[$idx]);
+            }
+            ?>
+          </ul>
+
             <div class="project">
                 <h5>Project X</h5>
                 <div class="row">
@@ -164,7 +128,7 @@ echo '</li>';
         </ul>
         <h3 class="border-bottom-gray" >Languages</h3>
         <ul>
-          <li>Español</li>
+          <li>Spanish</li>
           <li>English</li>
         </ul>
       </div>
@@ -178,7 +142,7 @@ echo '</li>';
 
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
     crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
     crossorigin="anonymous"></script>
