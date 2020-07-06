@@ -1,9 +1,9 @@
 <?php
+namespace App\Models;
 
 require_once 'BaseElement.php';
-require_once 'Printable.php';
 
-class Job extends BaseElement{
+class Job extends BaseElement {
     public function __construct($title, $description) {
         $newTitle = 'Job: ' . $title;
         $this->title = $newTitle;
@@ -15,6 +15,4 @@ class Job extends BaseElement{
       
         return "Job duration: $years years $extraMonths months";
     }
-
-
 }

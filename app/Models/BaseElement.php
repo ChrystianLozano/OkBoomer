@@ -1,6 +1,9 @@
 <?php
+namespace App\Models;
+
 require_once 'Printable.php';
-class BaseElement implements Printable{
+
+class BaseElement implements Printable {
     protected $title;
     public $description;
     public $visible = true;
@@ -29,7 +32,8 @@ class BaseElement implements Printable{
       
         return "$years years $extraMonths months";
     }
-    public function getDescription(){
+
+    public function getDescription() {
         return $this->description;
     }
 }
