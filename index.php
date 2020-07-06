@@ -1,19 +1,45 @@
 <?php
 $lastname = 'Lozano';
 $name = "Chrystian $lastname";
+$limitMonths = 24;
 // var_dump($name)
 $jobs = [
   [
     'title' => 'PHP Developer',
-    'description' => 'Tu diii amigooo'
+    'description' => 'Tu diii amigooo',
+    'visible' => true,
+    'monhs' => 1
   ],
   [
     'title' => 'Python Dev',
-    'description' => 'Tu diii amigooo'
+    'description' => 'Tu diii amigooo',
+    'visible' => false,
+    'monhs' => 1
+
+
   ],
   [
     'title' => 'Devops',
-    'description' => 'Tu diii amigooo'
+    'description' => 'Tu diii amigooo',
+    'visible' => false,
+    'monhs' => 8
+
+
+  ],
+  [
+    'title' => 'WebMaster',
+    'description' => 'Lo perron de lo perron',
+    'visible' => true,
+    'monhs' => 12
+
+
+  ],
+  [
+    'title' => 'Frontend Dev',
+    'description' => 'Lo chido de lomas chido',
+    'visible' => true,
+    'monhs' => 10
+
   ]
   
 ];
@@ -75,11 +101,23 @@ if($var2 > 2){
           <h3 class="border-bottom-gray" >Work Experience</h3>
           <ul>
             <?php
-            
+              $totalMonths = 0;
               for($idx = 0;$idx < count($jobs); $idx++) {
+                $totalMonths += $jobs[$idx]['monhs'];
+
+                if($totalMonths > $limitMonths){
+                break;
+                }
+
+
+                if($jobs[$idx]['visible'] == false){
+                  continue;
+                }
+
                 echo '<li class="work-position">';
                 echo '<h5>' . $jobs[$idx]['title'] . '</h5>';
                 echo '<p>' . $jobs[$idx]['description'] . '</p>';
+                echo '<p>' . $totalMonths . '</p>';
                 echo '<strong>Achievements:</strong>';
                 echo '<ul>';
                 echo   '<li>Lorem ipsum dolor sit amet, 80% consectetuer adipiscing elit.</li>';
