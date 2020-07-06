@@ -1,28 +1,28 @@
 <?php
 $lastname = 'Lozano';
 $name = "Chrystian $lastname";
-$limitMonths = 24;
+$limitMonths = 2000;
 // var_dump($name)
 $jobs = [
   [
     'title' => 'PHP Developer',
     'description' => 'Tu diii amigooo',
     'visible' => true,
-    'monhs' => 1
+    'monhs' => 23
   ],
   [
     'title' => 'Python Dev',
     'description' => 'Tu diii amigooo',
     'visible' => false,
-    'monhs' => 1
+    'monhs' => 34
 
 
   ],
   [
     'title' => 'Devops',
     'description' => 'Tu diii amigooo',
-    'visible' => false,
-    'monhs' => 8
+    'visible' => true,
+    'monhs' => 18
 
 
   ],
@@ -51,6 +51,35 @@ if($var2 > 2){
 }else{
   echo 'No es mayor que 2';
 }
+
+
+function getDuration($months){
+  $years = floor($months / 12);
+  $extraMonths = $months % 12;
+
+  return "$years años $extraMonths meses";
+}
+
+
+function printJob($job){
+  
+  echo '<li class="work-position">';
+  echo '<h5>' . $job['title'] . '</h5>';
+  echo '<p>' . $job['description'] . '</p>';
+  echo '<p>' . getDuration($job['monhs']) . '</p>';
+  echo '<strong>Achievements:</strong>';
+  echo '<ul>';
+  echo   '<li>Lorem ipsum dolor sit amet, 80% consectetuer adipiscing elit.</li>';
+  echo   '<li>Lorem ipsum dolor sit amet, 80% consectetuer adipiscing elit.</li>';
+  echo   '<li>Lorem ipsum dolor sit amet, 80% consectetuer adipiscing elit.</li>';
+  echo '</ul>';
+echo '</li>';
+
+}
+
+
+
+
 ?>
 
 <!doctype html>
@@ -114,17 +143,7 @@ if($var2 > 2){
                   continue;
                 }
 
-                echo '<li class="work-position">';
-                echo '<h5>' . $jobs[$idx]['title'] . '</h5>';
-                echo '<p>' . $jobs[$idx]['description'] . '</p>';
-                echo '<p>' . $totalMonths . '</p>';
-                echo '<strong>Achievements:</strong>';
-                echo '<ul>';
-                echo   '<li>Lorem ipsum dolor sit amet, 80% consectetuer adipiscing elit.</li>';
-                echo   '<li>Lorem ipsum dolor sit amet, 80% consectetuer adipiscing elit.</li>';
-                echo   '<li>Lorem ipsum dolor sit amet, 80% consectetuer adipiscing elit.</li>';
-                echo '</ul>';
-              echo '</li>';
+                printJob($jobs[$idx]);
                 
               };
             ?>
