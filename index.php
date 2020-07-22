@@ -17,7 +17,14 @@ $jobs = [
     'description' => 'esto es una descripcion',
 
   ],
+
 ];
+$var2 = 1;
+if($var2 > 2){
+  echo 'Es mayor que 2';
+} else {
+  echo 'NO ES MAYOR QUE 2';
+}
 
 var_dump($jobs)
 ?>
@@ -68,44 +75,21 @@ var_dump($jobs)
         <div>
           <h3 class="border-bottom-gray" >Work Experience</h3>
           <ul>
-            <li class="work-position">
-              <h5><?php 
-                echo $jobs[0]['title'];
-                ?></h5>
-              <p><?php 
-              echo $jobs[0]['description'];
-              ?></p>
-              <strong>Achievements:</strong>
-              <ul>
-                <li>Lorem ipsum dolor sit amet, 80% consectetuer adipiscing elit.</li>
-                <li>Lorem ipsum dolor sit amet, 80% consectetuer adipiscing elit.</li>
-                <li>Lorem ipsum dolor sit amet, 80% consectetuer adipiscing elit.</li>
-              </ul>
-            </li>
-            <li class="work-position">
-                <h5><?php 
-                echo $jobs[1]['title'];
-              ?></h5>
-                <p><?php echo $jobs[1]['description']; ?></p>
-                <strong>Achievements:</strong>
+            <?php
+              for($idx = 0;$idx < count($jobs);$idx++) {
+              echo  '<li class="work-position">';
+              echo  '<h5>' . $jobs[$idx]['title'] . '</h5>';
+              echo  '<p>' . $jobs[$idx]['description'] . '</p>';
+              echo  '<strong>Achievements:</strong>
                 <ul>
                   <li>Lorem ipsum dolor sit amet, 80% consectetuer adipiscing elit.</li>
                   <li>Lorem ipsum dolor sit amet, 80% consectetuer adipiscing elit.</li>
                   <li>Lorem ipsum dolor sit amet, 80% consectetuer adipiscing elit.</li>
                 </ul>
               </li>
-              <li class="work-position">
-                  <h5><?php 
-                echo $jobs[2]['title'];
-              ?></h5>
-                  <p><?php echo $jobs[1]['description']; ?></p>
-                  <strong>Achievements:</strong>
-                  <ul>
-                    <li>Lorem ipsum dolor sit amet, 80% consectetuer adipiscing elit.</li>
-                    <li>Lorem ipsum dolor sit amet, 80% consectetuer adipiscing elit.</li>
-                    <li>Lorem ipsum dolor sit amet, 80% consectetuer adipiscing elit.</li>
-                  </ul>
-                </li>
+              '; 
+              }
+            ?>
           </ul>
         </div>
         <div>
