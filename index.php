@@ -1,20 +1,41 @@
 <?php
 $lastname = 'Lozano';
 $name = "Chrystian $lastname";
+$limitMonths = 70;
 var_dump($name); //saber el tipo de datos de un avariable
 
 $jobs = [
   [
     'title' => 'PHP Developer',
     'description' => 'esto es una descripcion',
+    'visible' => false,
+    'months' => 5,
   ],
   [
     'title' => 'Python Dev',
     'description' => 'esto es una descripcion',
+    'visible' => false,
+    'months' => 9,
+
 
   ],[
     'title' => 'Devops',
     'description' => 'esto es una descripcion',
+    'visible' => true,
+    'months' => 15,
+
+  ],[
+    'title' => 'WebMaster',
+    'description' => 'esto es una descripcion',
+    'visible' => true,
+    'months' => 35,
+
+
+  ],[
+    'title' => 'Frontend Dev',
+    'description' => 'esto es una descripcion',
+    'visible' => true,
+    'months' => 26,
 
   ],
 
@@ -76,10 +97,20 @@ var_dump($jobs)
           <h3 class="border-bottom-gray" >Work Experience</h3>
           <ul>
             <?php
+            $totalMonths = 0;
               for($idx = 0;$idx < count($jobs);$idx++) {
+                $totalMonths += $jobs[$idx]['months'];
+                if($totalMonths > $limitMonths){
+                break;
+                }
+
+                if($jobs[$idx]['visible'] == false){
+                  continue;
+                }
               echo  '<li class="work-position">';
               echo  '<h5>' . $jobs[$idx]['title'] . '</h5>';
               echo  '<p>' . $jobs[$idx]['description'] . '</p>';
+              echo  '<p>' . $totalMonths . '</p>';
               echo  '<strong>Achievements:</strong>
                 <ul>
                   <li>Lorem ipsum dolor sit amet, 80% consectetuer adipiscing elit.</li>
