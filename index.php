@@ -75,14 +75,11 @@ var_dump($jobs);
             <?php
             $totalMonths = 0;
               for($idx = 0;$idx < count($jobs);$idx++) {
-                $totalMonths += $jobs[$idx]['months'];
+                $totalMonths += $jobs[$idx]->months;
                 if($totalMonths > $limitMonths){
                 break;
                 }
 
-                if($jobs[$idx]['visible'] == false){
-                  continue;
-                }
 
                 printJob($jobs[$idx]);
 
