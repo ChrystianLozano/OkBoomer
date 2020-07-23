@@ -41,13 +41,41 @@ $jobs = [
 
 ];
 $var2 = 1;
+
 if($var2 > 2){
   echo 'Es mayor que 2';
 } else {
   echo 'NO ES MAYOR QUE 2';
 }
 
-var_dump($jobs)
+var_dump($jobs);
+
+
+
+function getDuration($months){
+  $years = floor($months / 12);
+  $extraMonths = $months % 12;
+  return "$years años $extraMonths meses";
+}
+
+function printJob($job){
+  echo  '<li class="work-position">';
+  echo  '<h5>' . $job['title'] . '</h5>';
+  echo  '<p>' . $job['description'] . '</p>';
+  echo  '<p>' . getDuration($job['months']) . '</p>';
+
+  echo  '<strong>Achievements:</strong>
+    <ul>
+      <li>Lorem ipsum dolor sit amet, 80% consectetuer adipiscing elit.</li>
+      <li>Lorem ipsum dolor sit amet, 80% consectetuer adipiscing elit.</li>
+      <li>Lorem ipsum dolor sit amet, 80% consectetuer adipiscing elit.</li>
+    </ul>
+  </li>
+  '; 
+}
+
+
+
 ?>
 <!doctype html>
 <html lang="en">
@@ -107,18 +135,9 @@ var_dump($jobs)
                 if($jobs[$idx]['visible'] == false){
                   continue;
                 }
-              echo  '<li class="work-position">';
-              echo  '<h5>' . $jobs[$idx]['title'] . '</h5>';
-              echo  '<p>' . $jobs[$idx]['description'] . '</p>';
-              echo  '<p>' . $totalMonths . '</p>';
-              echo  '<strong>Achievements:</strong>
-                <ul>
-                  <li>Lorem ipsum dolor sit amet, 80% consectetuer adipiscing elit.</li>
-                  <li>Lorem ipsum dolor sit amet, 80% consectetuer adipiscing elit.</li>
-                  <li>Lorem ipsum dolor sit amet, 80% consectetuer adipiscing elit.</li>
-                </ul>
-              </li>
-              '; 
+
+                printJob($jobs[$idx]);
+
               }
             ?>
           </ul>
