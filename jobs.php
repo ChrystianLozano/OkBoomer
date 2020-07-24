@@ -1,36 +1,8 @@
 <?php
 
-class Job {
-  private $title;
-  public $description;
-  public $visible;
-  public $months;
+require 'app/Models/Job.php';
+require 'app/Models/Project.php';
 
-
-  public function __construct($t, $d) {
-    $this->setTitle($t);
-    $this->description = $d;
-  }
-
-
-  public function setTitle($t){
-    if($t == ''){
-      $this->title = 'N/A';
-    }else{
-    $this->title = $t;
-    }
-  }
-
-  public function getTitle() {
-    return $this->title;
-  }
-
-  public function getDurationAsString(){
-    $years = floor($this->months / 12);
-    $extraMonths = $this->months % 12;
-    return "$years años $extraMonths meses";
-  }
-}
 
 $job1 = new Job('PHP Developer', 'esto es una descripcion');
 $job1->visible = true;
@@ -43,6 +15,9 @@ $job2->months = 7;
 $job3 = new Job('', 'lo perron de lo perron');
 $job3->visible = true;
 $job3->months = 2;
+
+
+$project1 = new Project('Project 1', 'La descripcion perrona');
 
 
 
@@ -86,9 +61,13 @@ $jobs = [
   
   ];
 
+  $projects = [
+    $project1,
+  ];
+
  
   
-  function printJob($job){
+  function printElement($job){
     if($job->visible == false){
       return;
     }
